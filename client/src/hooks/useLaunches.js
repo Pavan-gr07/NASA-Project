@@ -19,7 +19,9 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
     async (e) => {
       e.preventDefault();
       // setPendingLaunch(true);
+
       const data = new FormData(e.target);
+      console.log(data, "data");
       const launchDate = new Date(data.get("launch-day"));
       const mission = data.get("mission-name");
       const rocket = data.get("rocket-name");
@@ -31,8 +33,7 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
         target,
       });
 
-      // TODO: Set success based on response.
-      const success = false;
+      const success = response.ok;
       if (success) {
         getLaunches();
         setTimeout(() => {
@@ -50,7 +51,6 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
     async (id) => {
       const response = await httpAbortLaunch(id);
 
-      // TODO: Set success based on response.-->done
       const success = response?.ok;
       if (success) {
         getLaunches();

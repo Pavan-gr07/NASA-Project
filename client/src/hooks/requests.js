@@ -39,6 +39,16 @@ async function httpAbortLaunch(id) {
   //     ok: false,
   //   };
   // }
+  try {
+    return await fetch(`${API_URL}/launches/${id}`, {
+      method: "delete",
+      headers: { "Content-type": "application/json" },
+    });
+  } catch (error) {
+    return {
+      ok: false,
+    };
+  }
 }
 
 export { httpGetPlanets, httpGetLaunches, httpSubmitLaunch, httpAbortLaunch };
