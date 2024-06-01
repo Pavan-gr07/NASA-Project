@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000";
+const API_URL = "https://nasa-project-woad.vercel.app/";
 
 async function httpGetPlanets() {
   const res = await fetch(`${API_URL}/planets`);
